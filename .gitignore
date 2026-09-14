@@ -1,0 +1,11 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+work/
+outputs/
+*.tsbuildinfo
+.env*
+!.env.example
+.DS_Store
+graphify-out/

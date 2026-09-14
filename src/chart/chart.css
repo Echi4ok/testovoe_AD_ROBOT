@@ -1,0 +1,124 @@
+.ts-chart {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  isolation: isolate;
+  font-family: Arial, Helvetica, sans-serif;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+.ts-chart:focus-visible {
+  outline: 3px solid #353e5e;
+  outline-offset: 5px;
+}
+.ts-svg {
+  display: block;
+  overflow: visible;
+}
+.ts-line {
+  transition: stroke-width 100ms ease;
+}
+.ts-highlight {
+  pointer-events: none;
+}
+.ts-tooltip {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  box-sizing: border-box;
+  max-width: var(--tooltip-max);
+  padding: 14px 16px 15px;
+  background: #fff;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  box-shadow:
+    3px 4px 10px #0006,
+    0 0 4px #0002;
+  color: #30322f;
+  font-size: 26px;
+  line-height: 29.5px;
+  pointer-events: none;
+}
+.ts-tooltip-date {
+  font-size: 22px;
+  line-height: 27px;
+  margin-bottom: 1px;
+}
+.ts-tooltip-row {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.ts-tooltip-dot {
+  display: inline-block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  align-self: center;
+}
+.ts-tooltip-label {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.ts-tooltip strong {
+  font-weight: 700;
+}
+.ts-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  color: #69636a;
+  font-size: 13px;
+  padding: 16px;
+  cursor: default;
+}
+.ts-empty-icon {
+  font-size: 38px;
+  line-height: 1;
+}
+.ts-empty strong {
+  font-size: 16px;
+  color: #3d3740;
+}
+.ts-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 600px) {
+  .ts-tooltip {
+    font-size: 17px;
+    line-height: 23px;
+    padding: 10px 11px;
+    border-radius: 6px;
+  }
+  .ts-tooltip-date {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .ts-tooltip-dot {
+    flex-basis: 13px;
+    width: 13px;
+    height: 13px;
+  }
+  .ts-tooltip-row {
+    gap: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-line {
+    transition: none;
+  }
+}
