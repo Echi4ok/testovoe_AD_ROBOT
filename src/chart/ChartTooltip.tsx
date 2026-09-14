@@ -14,13 +14,15 @@ interface Props {
 export function ChartTooltip({ id, time, rows, anchor, width, height }: Props) {
   const box = useElementSize<HTMLDivElement>({ width: 334, height: 178 });
   const preferredX = anchor.x + 28;
-  const x = Math.max(
-    2,
-    Math.min(
-      width - box.width - 2,
-      preferredX + box.width <= width ? preferredX : anchor.x - box.width - 28,
-    ),
-  );
+  const leftX = anchor.x - box.width - 28;
+  // Center over the pointer if a wide shared tooltip fits on neither side.
+  const proposedX =
+    preferredX + box.width <= width
+      ? preferredX
+      : leftX >= 0
+        ? leftX
+        : anchor.x - box.width / 2;
+  const x = Math.max(2, Math.min(width - box.width - 2, proposedX));
   const y = Math.max(
     4,
     Math.min(height - box.height - 3, anchor.y - box.height - 22),
